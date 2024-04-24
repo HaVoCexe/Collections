@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:HankCollections.Models"
+             xmlns:controls="clr-namespace:HankCollections.Controls"
+             x:Class="HankCollections.Pages.MainPage"
+             Title="MainPage">
+    <ScrollView>
+        <VerticalStackLayout>
+            <ListView x:Name="listView"
+                  ItemsSource="{Binding Collections}"
+                  HorizontalOptions="Center"
+                  SelectionMode="Single"
+                  ItemTapped="listView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:CollectionModel">
+                        <ViewCell>
+                            <controls:CollectionControl CollectionId="{Binding Id}"
+                                                        CollectionName="{Binding Name}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

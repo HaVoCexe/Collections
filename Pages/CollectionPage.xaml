@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:HankCollections.Models"
+             xmlns:controls="clr-namespace:HankCollections.Controls"
+             x:Class="HankCollections.Pages.CollectionPage"
+             Title="CollectionPage">
+    <ScrollView>
+        <VerticalStackLayout>
+            <ListView x:Name="listView"
+                  ItemsSource="{Binding Items}" 
+                  HorizontalOptions="Center"
+                  SelectionMode="Single"
+                  ItemTapped="listView_ItemTapped">
+                <ListView.Header>
+                    <Grid HeightRequest="50">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="ID" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="Image" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="Name" Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="Status" Grid.Row="0" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="Satisfaction 1-10" Grid.Row="0" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="Comment" Grid.Row="0" Grid.Column="5" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="Was sold?" Grid.Row="0" Grid.Column="6" VerticalOptions="Center" HorizontalOptions="Center" />
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:ItemModel">
+                        <ViewCell>
+                            <controls:ItemControl ItemId="{Binding TempId}"
+                                                 ItemName="{Binding Name}"
+                                                 ItemsImageId="{Binding ImageId}"
+                                                 ItemStatus="{Binding Status}"
+                                                 ItemSatisfaction="{Binding Satisfaction}"
+                                                 ItemComment="{Binding Comment}"
+                                                 ItemIsSold="{Binding IsSold}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <Button Text="Add new item" Clicked="NewItem_Clicked" Grid.Column="0" />
+                </ListView.Footer>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HankCollections.Pages.ItemCreatorPage"
+             Title="ItemCreatorPage">
+    <ScrollView>
+        <Grid RowDefinitions="2*, *, *, *, *, *, *, *, *" ColumnDefinitions="*, *" RowSpacing="40" ColumnSpacing="40" Padding="50">
+            <Label Text="Add/Edit an item" FontSize="Header" Grid.ColumnSpan="2" Grid.Row="0" />
+
+            <Label Text="Name" Grid.Row="1" Grid.Column="0" />
+            <Entry Text="{Binding Name}" Grid.Row="1" Grid.Column="1" />
+
+            <Label Text="Comment" Grid.Row="2" Grid.Column="0" />
+            <Entry Text="{Binding Comment}" Grid.Row="2" Grid.Column="1" />
+
+            <Label Text="Status" Grid.Row="3" Grid.Column="0" />
+            <Picker x:Name="statusPicker" Grid.Row="3" Grid.Column="1" />
+
+            <Label Text="Satisfaction 1-10" Grid.Row="4" Grid.Column="0" />
+            <Picker x:Name="satisfactionPicker" Grid.Row="4" Grid.Column="1" />
+
+            <Label Text="Was item sold?" Grid.Row="5" Grid.Column="0" />
+            <Switch x:Name="soldSwitch" IsToggled="False" Grid.Row="5" Grid.Column="1" />
+
+            <Label Text="Image (optional)" Grid.Row="6" Grid.Column="0" />
+            <Button Text="Select from local files" Clicked="AddImage_Clicked" Grid.Row="6" Grid.Column="1" />
+
+            <Grid RowDefinitions="*" ColumnDefinitions="*, *, *" Grid.ColumnSpan="2" Grid.Row="7" ColumnSpacing="40">
+                <Button Text="Save" Clicked="Save_Clicked" Grid.Row="0" Grid.Column="0" />
+                <Button Text="Cancel" Clicked="Cancel_Clicked" Grid.Row="0" Grid.Column="1" />
+                <Button Text="Remove" Clicked="Remove_Clicked" Grid.Row="0" Grid.Column="2" />
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>
